@@ -1,4 +1,4 @@
-#include "ESP8266WiFi.h"
+#include "ESP8266WiFi.h" //Wifi file
 String apiKey = "NG5HCKIJ2M653Y4O"; // Enter your Write API key from ThingSpeak
 const char* server = "api.thingspeak.com";
 // WiFi parameters to be configured
@@ -10,7 +10,7 @@ int trig=D2;
 WiFiClient client;
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   pinMode(eco, INPUT);
   pinMode(trig, OUTPUT);
 
