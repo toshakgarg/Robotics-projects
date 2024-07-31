@@ -1,0 +1,49 @@
+//ERROR
+
+#include <DHT.h>
+#define DHTPIN 2
+#define DHTTYPE DHT11
+DHT dht(DHTPIN,DHTTYPE);
+
+float arr[10],t;
+void temp();
+void setup()
+{
+  Serial.begin(9600);
+  Serial.print("DHT11 test!");
+  dht.begin();
+}
+
+void loop()
+{
+  int i=0;
+  temp();
+  arr[0]=t;
+  while(i<9)
+  {
+    temp();
+    if((t-arr[i])==2)
+    {
+      i++;
+      arr[i]=t;
+    }
+  }
+  Serial.print("Printing array");
+  for(i=0;i<10;i++)
+  {
+    Serial.println(arr[i]);
+  }
+  delay(200000);
+}
+
+
+
+void temp()
+{
+  float t=dht.readTemperature();
+  if(isnan(t))
+  {
+    Serial.println("Failed to read from DHT Sensor!");
+    return;
+  }
+}

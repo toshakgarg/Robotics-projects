@@ -29,5 +29,5 @@ void loop()
   {
     digitalWrite(BUZZER,LOW);
   }
-  delay(1000);
+  delay(100);
 }

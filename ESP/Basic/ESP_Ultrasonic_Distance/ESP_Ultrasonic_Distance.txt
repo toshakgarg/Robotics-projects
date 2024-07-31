@@ -1,6 +1,6 @@
 int eco=D8;
 int trig=D6;
-int BUZZER=2;
+int BUZZER=D7;
 void setup()
 {
   Serial.begin(115200);
@@ -29,5 +29,5 @@ void loop()
   {
     digitalWrite(BUZZER,LOW);
   }
-  delay(1000);
+  delay(100);
 }

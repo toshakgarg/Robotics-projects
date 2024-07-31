@@ -2,25 +2,25 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-
+//display
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
-
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+//DHT
 #define DHTPIN 2
 #define DHTTYPE DHT11
-
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 DHT dht(DHTPIN,DHTTYPE);
-
+//pins 
 int eco=9;
 int trig=10;
-
+int gas_p=A0;
+//Global Variable 
 float humi,temp,Dis;
 int Time,gas;
-
-void temp_humi();
-void gass();
-void ultra();
+//function
+void temp_humi();//data collected and print on Serial monitor
+void gass();//data collected and print on Serial monitor
+void ultra();//data collected and print on Serial monitor
 
 void setup()
 {
@@ -45,8 +45,8 @@ void loop()
     for(;;);
   }
 
-  display.display(); // Show splash screen
-    display.clearDisplay(); // Clear the display
+  display.display(); 
+    display.clearDisplay(); 
     display.setTextSize(1);
     display.setTextColor(SSD1306_WHITE);
     display.setCursor(0, 0);
@@ -62,7 +62,6 @@ void loop()
   delay(2000);
 }
 
-
 void temp_humi()
 {
   humi=dht.readHumidity();
@@ -73,6 +72,7 @@ void temp_humi()
     Serial.println("Failed to read from DHT Sensor!");
     return;
   }
+
   Serial.print("Humidity: ");
   Serial.println(humi);
   Serial.print("Temperature: ");
@@ -82,7 +82,7 @@ void temp_humi()
 
 void gass()
 {
-  gas=analogRead(A0);
+  gas=analogRead(gas_p);
   Serial.print("Gas sensor reading: ");
   Serial.println(gas);
 }
