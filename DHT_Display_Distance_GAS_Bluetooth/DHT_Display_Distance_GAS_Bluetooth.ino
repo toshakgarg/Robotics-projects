@@ -36,11 +36,11 @@ void setup()
   {
     Serial.println("Not Working");
     for(;;);
-  }/*
+  }
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }
-  Serial.println("Bluetooth Module Initialized");*/
+  Serial.println("Bluetooth Module Initialized");
 }
 
 void loop() 
